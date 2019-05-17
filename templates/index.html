@@ -17,7 +17,6 @@
 
 <body>
 	<nav class="navbar sticky-top navbar-expand-lg navbar-light">
-    
     	<a class="navbar-brand" id="HeaderBrand" href="index.html">
       		<img src="https://media.giphy.com/media/JRZwMhzk7WolG/giphy.gif" width="30" height="30" class="d-inline-block align-top" alt="">
       		Mission to Mars
@@ -47,7 +46,7 @@
 				<div class='row'>
 					<div class='col-md-12'>
 						<h5>Mars Facts</h5>
-						{{mars.mars_table}}
+						{{mars.mars_table|safe}}
 					</div>
 				</div>
 			</div>
@@ -59,7 +58,7 @@
 			<div class='col-md-12'>
 				<h2>Latest Mars News</h2>
 				<h4>{{mars.news_title}}</h4>
-				<h4>{{mars.news_p}}</h4>
+				<h5>{{mars.news_p}}</h5>
 			</div>
 		</div>
 	</div>
@@ -71,26 +70,27 @@
 				<hr>
 			</div>
 		</div>
-
+		{% for hemisphere in mars.mars_hemispheres %}
 		<div class="row">
 			<div class='col-md-6'>
-				<img class='img-fluid' src="{{mars.mars_hemispheres[0]['img_url']}}">
-				<h4>{{mars.mars_hemispheres[0]['title']}}</h4>
+				<img class='img-fluid' src="{{hemisphere.img_url}}">
+				<h4>{{hemisphere.title}}</h4>
 			</div>
 			<div class='col-md-6'>
-				<img class='img-fluid' src="{{mars.mars_hemispheres[1]['img_url']}}">
-				<h4>{{mars.mars_hemispheres[1]['title']}}</h4>
+				<img class='img-fluid' src="{{hemisphere.img_url}}">
+				<h4>{{hemisphere.title}}</h4>
 			</div>
+		 {% endfor %}
 		</div>
 
 		<div class='row pt-3'>
 			<div class='col-md-6'>
-				<img class='img-fluid' src="{{mars.mars_hemispheres[2]['img_url']}}">
-				<h4>{{mars.mars_hemispheres[2]['title']}}</h4>
+				<img class='img-fluid' src="{{mars.mars_hemispheres.img_url}}">
+				<h4>{{mars.mars_hemispheres.title}}</h4>
 			</div>
 			<div class='col-md-6'>
-				<img class='img-fluid' src="{{mars.mars_hemispheres[3]['img_url']}}">
-				<h4>{{mars.mars_hemispheres[3]['title']}}</h4>
+				<img class='img-fluid' src="{{mars.mars_hemispheres.img_url}}">
+				<h4>{{mars.mars_hemispheres.title}}</h4>
 			</div>
 		</div>
 	</div>
